@@ -1,5 +1,7 @@
 ############SCOPE##############
 
+import random
+
 """
 enemies = 1  #Global Variable
 
@@ -14,7 +16,24 @@ increase_enemies()
 print(f"Enemies from outside function is now {enemies}")
 """
 
+WELCOME_MESSAGE = "Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100. \n"
+
+randomized_number = random.randint(1, 100)
+
+
 def numberGuess():
-    print("Welcome to the Number Guessing Game")
-    print("I'm thinking of a number between 1 and 100")
+    print(WELCOME_MESSAGE)
+    difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
+
+    easy_difficulty = 10
+    hard_difficulty = 5
+
+    if difficulty == "easy":
+        print(f"You have {easy_difficulty} attempts remaining to guess the number")
+
+
+
+
+
+numberGuess()
 

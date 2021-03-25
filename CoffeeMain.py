@@ -24,22 +24,88 @@ MENU = {
     }
 }
 
+def user_question():
+    """"Ask User Coffee Choice"""
+    return input('What would you like? (espresso/latte/cappuccino): ')
 
-
-# TODO: 1. Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
+def collect_money():
 
 
 def user_prompt():
     """Prompt user what he wants to do"""
-    user_input = input('What would you like? (espresso/latte/cappuccino): ')
-    coffee_is_on = True
-    while coffee_is_on:
-        coffee_is_on = True
-        return user_input
-    else:
-        user_input = False
 
-user_prompt()
+    # JSON VARIABLES FROM MENU
+    espresso_water = MENU["espresso"]["ingredients"]["water"]
+    espresso_coffee = MENU["espresso"]["ingredients"]["coffee"]
+    espresso_cost = MENU["latte"]["cost"]
+
+    latte_water = MENU["latte"]["ingredients"]["water"]
+    latte_coffee = MENU["latte"]["ingredients"]["coffee"]
+    latte_milk = MENU["latte"]["ingredients"]["milk"]
+    latte_cost = MENU["latte"]["cost"]
+
+    cappuccino_water = MENU["cappuccino"]["ingredients"]["water"]
+    cappuccino_coffee = MENU["cappuccino"]["ingredients"]["coffee"]
+    cappuccino_milk = MENU["cappuccino"]["ingredients"]["milk"]
+    cappuccino_cost = MENU["cappuccino"]["cost"]
+
+    total_water = espresso_water + latte_water + cappuccino_water
+    total_coffee = espresso_coffee + latte_coffee + cappuccino_coffee
+    total_milk = latte_milk + cappuccino_milk
+    total_cost = espresso_cost + latte_cost + cappuccino_cost
+
+    repeat = True
+    while repeat:
+        choice = user_question()
+        if choice == "espresso":
+            if espresso_water > total_water:
+                print("Sorry there's not enough water")
+            elif espresso_coffee > total_coffee:
+                print("Sorry there's not enough coffee")
+            else:
+                total_water -= espresso_water
+                total_coffee -= espresso_coffee
+                print("Here's your order of Espresso")
+        elif choice == 'latte':
+            if latte_water > total_water:
+                print("Sorry there's not enough water")
+            elif latte_coffee > total_coffee:
+                print("Sorry there's not enough coffee")
+            elif latte_milk > total_milk:
+                print("Sorry there's not enough milk")
+            else:
+                total_water -= latte_water
+                total_coffee -= latte_coffee
+                total_milk -= latte_milk
+                print("Here's your order of Latte")
+        elif choice == 'cappuccino':
+            if cappuccino_water > total_water:
+                print("Sorry there's not enough water")
+            elif cappuccino_coffee > total_coffee:
+                print("Sorry there's not enough coffee")
+            elif cappuccino_milk > total_milk:
+                print("Sorry there's not enough milk")
+            else:
+                total_water -= cappuccino_water
+                total_coffee -= cappuccino_coffee
+                total_milk -= cappuccino_milk
+                print("Here's your order of Cappuccino")
+        elif choice == 'report':
+            print(f"Water: {total_water}ml\nMilk: {total_milk}ml\nCoffee: {total_coffee}g")
+        elif choice == 'off':
+            repeat = False
+        else:
+            print("Wrong Input, Start Application again")
+            repeat = False
+
+
+def coffee_starts():
+    user_prompt()
+
+
+coffee_starts()
+
+# TODO: 1. Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
 
 # a. Check the user’s input to decide what to do next.
 # b. The prompt should show every time action has completed, e.g. once the drink is

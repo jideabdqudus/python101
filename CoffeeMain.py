@@ -29,6 +29,23 @@ def user_question():
     return input('What would you like? (espresso/latte/cappuccino): ')
 
 def collect_money():
+    print("Please Insert Coins")
+    quarters = int(input("How many quarters?: "))
+    dimes = int(input("How many dimes?: "))
+    nickles = int(input("How many nickles?: "))
+    pennies = int(input("How many pennies?: "))
+
+    quarters_amount = 0.25 * quarters
+    dimes_amount = 0.10 * dimes
+    nickles_amount = 0.05 * nickles
+    pennies_amount = 0.01 * pennies
+
+    total_amount = quarters_amount + dimes_amount + nickles_amount + pennies_amount
+
+    pennies = "%.2f" % total_amount
+
+    return float(pennies)
+
 
 
 def user_prompt():
@@ -54,6 +71,8 @@ def user_prompt():
     total_milk = latte_milk + cappuccino_milk
     total_cost = espresso_cost + latte_cost + cappuccino_cost
 
+    acrued_money = 0
+
     repeat = True
     while repeat:
         choice = user_question()
@@ -63,9 +82,17 @@ def user_prompt():
             elif espresso_coffee > total_coffee:
                 print("Sorry there's not enough coffee")
             else:
-                total_water -= espresso_water
-                total_coffee -= espresso_coffee
-                print("Here's your order of Espresso")
+                total_pennies = collect_money()
+                if total_pennies > espresso_cost or total_pennies == espresso_cost:
+                    acrued_money += espresso_cost
+                    change = float(total_pennies - espresso_cost)
+                    change_dec = "%.2f" % change
+                    total_water -= espresso_water
+                    total_coffee -= espresso_coffee
+                    print(f"Here is ${change_dec} in change")
+                    print("Here's your order of Espresso")
+                else:
+                    print("Sorry that's not enough money. Money refunded.")
         elif choice == 'latte':
             if latte_water > total_water:
                 print("Sorry there's not enough water")
@@ -74,10 +101,19 @@ def user_prompt():
             elif latte_milk > total_milk:
                 print("Sorry there's not enough milk")
             else:
-                total_water -= latte_water
-                total_coffee -= latte_coffee
-                total_milk -= latte_milk
-                print("Here's your order of Latte")
+                total_pennies = collect_money()
+                if total_pennies > latte_cost or total_pennies == latte_cost:
+                    acrued_money += latte_cost
+                    change = float(total_pennies - latte_cost)
+                    change_dec = "%.2f" % change
+                    total_water -= latte_water
+                    total_coffee -= latte_coffee
+                    total_milk -= latte_milk
+                    print(f"Here is ${change_dec} in change")
+                    print("Here's your order of Latte")
+                else:
+                    print("Sorry that's not enough money. Money refunded.")
+
         elif choice == 'cappuccino':
             if cappuccino_water > total_water:
                 print("Sorry there's not enough water")
@@ -86,12 +122,21 @@ def user_prompt():
             elif cappuccino_milk > total_milk:
                 print("Sorry there's not enough milk")
             else:
-                total_water -= cappuccino_water
-                total_coffee -= cappuccino_coffee
-                total_milk -= cappuccino_milk
-                print("Here's your order of Cappuccino")
+                total_pennies = collect_money()
+                if total_pennies > latte_cost or total_pennies == cappuccino_cost:
+                    acrued_money += cappuccino_cost
+                    change = float(total_pennies - cappuccino_cost)
+                    change_dec = "%.2f" % change
+                    total_water -= cappuccino_water
+                    total_coffee -= cappuccino_coffee
+                    total_milk -= cappuccino_milk
+                    print(f"Here is ${change_dec} in change")
+                    print("Here's your order of Cappuccino")
+                else:
+                    print("Sorry that's not enough money. Money refunded.")
+
         elif choice == 'report':
-            print(f"Water: {total_water}ml\nMilk: {total_milk}ml\nCoffee: {total_coffee}g")
+            print(f"Water: {total_water}ml\nMilk: {total_milk}ml\nCoffee: {total_coffee}g\nMoney: ${acrued_money}")
         elif choice == 'off':
             repeat = False
         else:

@@ -90,7 +90,7 @@ def user_prompt():
                     total_water -= espresso_water
                     total_coffee -= espresso_coffee
                     print(f"Here is ${change_dec} in change")
-                    print("Here's your order of Espresso")
+                    print("Here's your order of ☕ Espresso")
                 else:
                     print("Sorry that's not enough money. Money refunded.")
         elif choice == 'latte':
@@ -110,7 +110,7 @@ def user_prompt():
                     total_coffee -= latte_coffee
                     total_milk -= latte_milk
                     print(f"Here is ${change_dec} in change")
-                    print("Here's your order of Latte")
+                    print("Here's your order of ☕ Latte")
                 else:
                     print("Sorry that's not enough money. Money refunded.")
 
@@ -131,7 +131,7 @@ def user_prompt():
                     total_coffee -= cappuccino_coffee
                     total_milk -= cappuccino_milk
                     print(f"Here is ${change_dec} in change")
-                    print("Here's your order of Cappuccino")
+                    print("Here's your order of ☕ Cappuccino")
                 else:
                     print("Sorry that's not enough money. Money refunded.")
 

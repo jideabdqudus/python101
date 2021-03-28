@@ -27,7 +27,6 @@ turtle.setheading(0)
 turtle.speed("fastest")
 
 
-
 value = 10
 
 

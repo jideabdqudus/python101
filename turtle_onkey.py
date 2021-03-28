@@ -10,14 +10,16 @@ def move_backward():
     turtle.backward(10)
 
 def counter_clockwise():
-    turtle.setheading(-360)
+    turtle.left(10)
 
 def clockwise():
-    turtle.setheading(360)
+    turtle.right(10)
 
 def clear_drawing():
-    screen.clear()
+    turtle.clear()
+    turtle.penup()
     turtle.home()
+    turtle.pendown()
 
 
 screen.listen()

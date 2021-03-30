@@ -1,29 +1,19 @@
-from turtle import Screen
+from turtle import Screen, Turtle
 from paddle import Paddle
 
 screen = Screen()
 paddle = Paddle()
 
+
 screen.setup(height=600, width=800)
 screen.bgcolor("black")
 screen.title("Ping Pong")
-screen.exitonclick()
-screen.tracer(0)
-screen.listen()
 
+
+screen.listen()
 screen.onkey(fun=paddle.move_paddle_up, key="Up")
 screen.onkey(fun=paddle.move_paddle_down, key="Down")
-
-
-
-
-
-
-
-
-
-
-
+screen.exitonclick()
 
 
 # Create the screen
@@ -34,4 +24,3 @@ screen.onkey(fun=paddle.move_paddle_down, key="Down")
 # Detect collision with paddle
 # Detect when paddle misses
 # Keep score
-

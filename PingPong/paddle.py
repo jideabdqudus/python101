@@ -14,11 +14,9 @@ class Paddle(Turtle):
         self.turtlesize(stretch_wid=5, stretch_len=1)
 
     def move_paddle_up(self):
-        print("working")
         new_y = self.ycor() + 20
         self.goto(self.xcor(), new_y)
 
     def move_paddle_down(self):
-        print("working")
         new_y = self.ycor() - 20
         self.goto(self.xcor(), new_y)

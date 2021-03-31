@@ -1,4 +1,4 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 from paddle import Paddle
 from ball import Ball
 import time
@@ -25,12 +25,14 @@ while game_is_on:
     time.sleep(0.01)
     screen.update()
     ball.move()
-    if paddle.distance(ball) < 20:
-        ball.bounce(-1)
-    if ball.ycor() > 295 or ball.ycor() < -295:
-        ball.bounce(-1)
-    if ball.xcor() > 380 or ball.xcor() < -380:
+    if ball.distance(paddle) < 20 or ball.distance(second_paddle) < 20:
+        ball.bounce(1, -1)
+    if ball.ycor() > 300 or ball.ycor() < -300:
+        ball.bounce(-1, 1)
+    if ball.xcor() > 390 or ball.xcor() < -390:
+        # paddle.write(f"GAME OVER", align="center", font=("Arial", 24, "normal"))
         game_is_on = False
+
 screen.exitonclick()
 
 # Create the screen

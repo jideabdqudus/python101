@@ -2,15 +2,16 @@ from turtle import Turtle
 
 
 class Paddle(Turtle):
-    def __init__(self):
+    def __init__(self, coordinates):
         super().__init__()
-        self.create_paddle()
+        self.coordinates = coordinates
+        self.create_paddle(coordinates)
 
-    def create_paddle(self):
+    def create_paddle(self, coordinates):
         self.shape("square")
         self.penup()
         self.color("white")
-        self.goto(x=350, y=0)
+        self.goto(coordinates)
         self.turtlesize(stretch_wid=5, stretch_len=1)
 
     def move_paddle_up(self):

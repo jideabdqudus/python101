@@ -13,6 +13,8 @@ screen.tracer(0)
 ball = Ball()
 paddle = Paddle((350, 0))
 second_paddle = Paddle((-350, 0))
+left_score = 0
+right_score = 0
 scoreboard = Scoreboard()
 
 screen.listen()
@@ -31,13 +33,12 @@ while game_is_on:
         ball.bounce(1, -1)
     if ball.ycor() > 300 or ball.ycor() < -300:
         ball.bounce(-1, 1)
-    if ball.xcor() > 390 or ball.xcor() < -390:
+    if ball.xcor() > 390:
+        scoreboard.l_point()
         ball.reset_position()
-        # paddle.write(f"GAME OVER", align="center", font=("Arial", 24, "normal"))
-
+    if ball.xcor() < -390:
+        right_score += 1
+        scoreboard.r_point()
+        ball.reset_position()
 
 screen.exitonclick()
-
-# Detect collision with paddle
-# Detect when paddle misses
-# Keep score

@@ -29,4 +29,5 @@ class Car:
         self.color = kwargs.get("color")
 
 my_car = Car(make="Nissan", model="GTE", color="red")
+
 print(my_car.color)

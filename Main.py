@@ -69,6 +69,9 @@ print(next(g))
 
 """
 
+
+"""
+
 my_array = []
 
 def fib(num):
@@ -82,3 +85,5 @@ def fib(num):
 
 for x in fib(20):
     print(x)
+
+"""

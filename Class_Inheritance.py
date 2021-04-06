@@ -12,7 +12,7 @@ class Hustle:
 
     @staticmethod
     def hunger():
-        print("Always hungry")
+        print('Always hungry')
 
 
 class Fish(Animal, Hustle):

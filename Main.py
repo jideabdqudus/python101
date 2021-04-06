@@ -87,3 +87,25 @@ for x in fib(20):
     print(x)
 
 """
+
+
+import random
+
+def guessing_game():
+    answer = random.randint(1, 10)
+    started = True
+    while started:
+        try:
+            guess = int(input("Guess a number 1-10: "))
+            if 0 < guess < 11:
+                if guess == answer:
+                    print("You're a genius")
+                    started = False
+            else:
+                print("Hey Bozo, I said 1-10")
+
+        except ValueError:
+            print("Please enter a number")
+            continue
+
+guessing_game()

@@ -1,11 +1,12 @@
 # TWO SUM
-def twoSum (nums, target):
+def twoSum(nums, target):
     for x in range(0, len(nums), 1):
-        for i in range(x+1, len(nums), 1):
+        for i in range(x + 1, len(nums), 1):
             if nums[x] + nums[i] == target:
                 print([x, i])
                 return [x, i]
     return None
+
 
 # String Hashes
 class HashTable:
@@ -59,52 +60,60 @@ class HashTable:
 
 class Hashing:
     def __init__(self):
-        self.arr = [None] * 10
+        self.arr = [None] * 100
 
     def hash_funct(self, key):
-        print(key % len(self.arr))
         return key % len(self.arr)
 
     def insert(self, key, value):
         hash_key = self.hash_funct(key)
-        self.arr[hash_key] = value
-        print(self.arr)
+        self.arr[hash_key] = {value: key}
 
-
-    def twoSumAgain (self, nums, target):
+    def twoSumAgain(self, nums, target):
         for x in range(0, len(nums), 1):
-            print(x)
-            # currentVal = self.arr[nums[x]]
-            # print(currentVal)
+            currentVal = self.arr[nums[x]]  # self.arr[3][2] = {4,2}, 2:3
+            if (currentVal != None):
+                print([currentVal, x])
+                return [currentVal, x]
+            else:
+                numberToFind = target - nums[x]
+                self.insert(x, numberToFind)
+                # print(self.arr)
         return None
 
 
+def two_sum_again(nums, target):
+    dict = {}
+    for x in range(0, len(nums), 1):
+        currentVal = dict[nums[x]]
+        # currentVal = self.arr[nums[x]]  # self.arr[3][2] = {4,2}, 2:3
+        if (currentVal):
+            print([currentVal, x])
+            return [currentVal, x]
+        else:
+            numberToFind = target - nums[x]
+            dict[numberToFind] = x
+            # self.insert(x, numberToFind)
+            print(dict)
+    return None
 
-h = Hashing()
-h.twoSumAgain(nums=[2, 7, 11, 15], target=9)
+
+dico = {}
+dico[3] ="as"
+print(dico[4])
+
+# two_sum_again(nums=[1, 3, 7, 9, 2], target=11)
+
+# h = Hashing()
+# h.twoSumAgain(nums=[1,3,7,9,2], target=11)
 # h.insert(4, 100)
-# print(h.arr[4])
+# print(h.arr)
+# print(h.arr[0])
+# print(h.arr[0][10])
+# print(h.arr[3][2])
 
 # t = HashTable()
 # t[5] = 130
 # print(t['march 6'])
 
 # twoSum([2, 7, 11, 15], 9)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

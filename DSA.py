@@ -33,6 +33,12 @@ class HashTable:
         self.arr[h] = None
 
 
+# t = HashTable()
+# t["marh"] = 130
+# print(t['marh'])
+
+# print(t['march 6'])
+
 # const
 # findTwoSum = function(nums, target)
 # {
@@ -67,34 +73,30 @@ class Hashing:
 
     def insert(self, key, value):
         hash_key = self.hash_funct(key)
-        self.arr[hash_key] = {value: key}
+        self.arr[hash_key] = value
 
-    def twoSumAgain(self, nums, target):
-        for x in range(0, len(nums), 1):
-            currentVal = self.arr[nums[x]]  # self.arr[3][2] = {4,2}, 2:3
-            if (currentVal != None):
-                print([currentVal, x])
-                return [currentVal, x]
-            else:
-                numberToFind = target - nums[x]
-                self.insert(x, numberToFind)
-                # print(self.arr)
-        return None
+
+# h = Hashing()
+# h.twoSumAgain(nums=[1,3,7,9,2], target=11)
+# h.insert(4, 100)
+# print(h.arr)
+
+    # def twoSumAgain(self, nums, target):
+    #     for x in range(0, len(nums), 1):
+    #         currentVal = self.arr[nums[x]]  # self.arr[3][2] = {4,2}, 2:3
+    #         if (currentVal != None):
+    #             print([currentVal, x])
+    #             return [currentVal, x]
+    #         else:
+    #             numberToFind = target - nums[x]
+    #             self.insert(x, numberToFind)
+    #             # print(self.arr)
+    #     return None
 
 
 def two_sum_again(nums, target):
     dict = {}
-    for x in range(0, len(nums), 1):
-        # currentVal = dict[nums[x]]
-        # currentVal = self.arr[nums[x]]  # self.arr[3][2] = {4,2}, 2:3
-        # if (currentVal):
-        #     print([currentVal, x])
-        #     return [currentVal, x]
-        # else:
-        #     numberToFind = target - nums[x]
-        #     dict[numberToFind] = x
-        #     # self.insert(x, numberToFind)
-        #     print(dict)
+    for x in range(0, len(nums)):
         try:
             currentVal = dict[nums[x]]
             print([currentVal, x])
@@ -102,20 +104,21 @@ def two_sum_again(nums, target):
         except KeyError:
             numberToFind = target - nums[x]
             dict[numberToFind] = x
-            # self.insert(x, numberToFind)
-            # print(dict)
+    print("None")
     return None
 
+two_sum_again(nums=[1,4,7,3], target=7) #[1,3]
 
 # dico = {}
 # dico["yes"] ="as"
+# print(dico["yes"])
 # try:
 #     print(dico[5])
 # except KeyError:
 #     print(dico["yes"])
 # print(dico[5])
 
-two_sum_again(nums=[2, 7, 11, 15], target=9)
+# two_sum_again(nums=[1,3,7,9,2], target=7)
 
 # h = Hashing()
 # h.twoSumAgain(nums=[1,3,7,9,2], target=11)

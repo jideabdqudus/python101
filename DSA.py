@@ -85,24 +85,37 @@ class Hashing:
 def two_sum_again(nums, target):
     dict = {}
     for x in range(0, len(nums), 1):
-        currentVal = dict[nums[x]]
+        # currentVal = dict[nums[x]]
         # currentVal = self.arr[nums[x]]  # self.arr[3][2] = {4,2}, 2:3
-        if (currentVal):
+        # if (currentVal):
+        #     print([currentVal, x])
+        #     return [currentVal, x]
+        # else:
+        #     numberToFind = target - nums[x]
+        #     dict[numberToFind] = x
+        #     # self.insert(x, numberToFind)
+        #     print(dict)
+        try:
+            currentVal = dict[nums[x]]
             print([currentVal, x])
             return [currentVal, x]
-        else:
+        except KeyError:
             numberToFind = target - nums[x]
             dict[numberToFind] = x
             # self.insert(x, numberToFind)
-            print(dict)
+            # print(dict)
     return None
 
 
-dico = {}
-dico[3] ="as"
-print(dico[4])
+# dico = {}
+# dico["yes"] ="as"
+# try:
+#     print(dico[5])
+# except KeyError:
+#     print(dico["yes"])
+# print(dico[5])
 
-# two_sum_again(nums=[1, 3, 7, 9, 2], target=11)
+two_sum_again(nums=[2, 7, 11, 15], target=9)
 
 # h = Hashing()
 # h.twoSumAgain(nums=[1,3,7,9,2], target=11)
